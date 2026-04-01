@@ -27,15 +27,19 @@ You MUST follow this structured execution pattern:
 Before planning, classify the user request:
 
 - If request is ambiguous, has multiple plausible interpretations, or needs creative exploration: call Brainstorming first.
-- If key requirements or constraints are missing: ask targeted clarifying question(s) first, then route to Brainstorming before planning.
 - If request is clear and implementation-ready: continue directly to Step 1.
 
 After Brainstorming, you MUST obtain explicit user approval before calling Planner.
+If Brainstorming returns partial approval, route back to Brainstorming for refinement.
 Without explicit approval, do not proceed to planning or execution.
 
 ### Step 1: Get the Plan
 
-Call the Planner agent with the user's request. The Planner will return implementation steps.
+Call the Planner agent to get implementation steps.
+
+- If Brainstorming was used, call Planner with the approved handoff context from Brainstorming as primary input.
+- Also include the original user request for traceability.
+- If Brainstorming was not used, call Planner with the user's request.
 
 ### Step 2: Parse Into Phases
 

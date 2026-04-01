@@ -1,6 +1,6 @@
 ---
 name: Orchestrator
-description: Sonnet, Codex, Gemini
+description: Codex, Gemini
 model: GPT-5.3-Codex (copilot)
 tools: ['read/readFile', 'agent', 'vscode/memory']
 ---

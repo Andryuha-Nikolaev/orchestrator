@@ -26,7 +26,8 @@ You MUST follow this structured execution pattern:
 
 Before planning, classify the user request:
 
-- If request is ambiguous or creative exploration is needed: call Brainstorming first.
+- If request is ambiguous, has multiple plausible interpretations, or needs creative exploration: call Brainstorming first.
+- If key requirements or constraints are missing: ask targeted clarifying question(s) first, then route to Brainstorming before planning.
 - If request is clear and implementation-ready: continue directly to Step 1.
 
 After Brainstorming, you MUST obtain explicit user approval before calling Planner.

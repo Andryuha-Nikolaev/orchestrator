@@ -51,7 +51,25 @@ Output your execution plan like this:
   Files: src/App.tsx
 ```
 
-### Step 3: Execute Each Phase
+### Step 3: Mandatory Plan Approval Gate
+
+Before executing anything, you MUST get explicit user approval of the final execution plan.
+
+After showing `## Execution Plan`, present approval UI with two cards:
+
+1. Confirmation card: `Approve plan`
+2. Corrections card with text input: `Enter corrections`
+
+Decision logic:
+
+1. If user approves, continue to execution.
+2. If user enters corrections, send them back to Planner and request an updated plan.
+3. Re-parse the updated plan into phases and show the approval cards again.
+4. Repeat this loop until explicit approval is received.
+
+Hard rule: NEVER start phase execution without explicit user confirmation.
+
+### Step 4: Execute Each Phase
 
 For each phase:
 
@@ -60,7 +78,7 @@ For each phase:
 3. **Wait for all tasks in phase to complete** before starting next phase
 4. **Report progress** — After each phase, summarize what was completed
 
-### Step 4: Verify and Report
+### Step 5: Verify and Report
 
 After all phases complete, verify the work hangs together and report results.
 
@@ -156,10 +174,19 @@ When delegating, describe WHAT needs to be done (the outcome), not HOW to do it.
 - Task 3.1: Update all components to use theme tokens → Coder
 ```
 
-### Step 3 — Execute
+### Step 3 — Mandatory approval
+
+Show approval cards:
+
+- `Approve plan`
+- `Enter corrections`
+
+If corrections are provided, send them to Planner, update the plan, and ask for approval again.
+
+### Step 4 — Execute
 
 **Phase 1** — Call Designer for both design tasks (parallel)
 **Phase 2** — Call Coder twice in parallel for context + toggle
 **Phase 3** — Call Coder to apply theme across components
 
-### Step 4 — Report completion to user
+### Step 5 — Report completion to user

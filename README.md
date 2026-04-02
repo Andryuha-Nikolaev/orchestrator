@@ -13,9 +13,8 @@ This repository defines a multi-agent workflow for turning user requests into sa
 ## Execution Flow
 
 1. **Step 0: Ambiguity/Creative Gate**
-   - If request is ambiguous, has multiple plausible interpretations, or needs creative exploration: call Brainstorming first.
-   - If key requirements or constraints are missing: ask targeted clarifying question(s) first, then route to Brainstorming before planning.
-   - If request is clear and implementation-ready: continue directly to Step 1.
+   - If the request is ambiguous or creative, route to Brainstorming first.
+   - Brainstorming asks exactly one clarifying question, presents 2-3 approaches with trade-offs, recommends one option, and asks for explicit approval.
 2. **Explicit User Approval**
    - Execution does not continue until the user explicitly approves the selected direction.
 3. **Step 1: Planner**

@@ -2,17 +2,7 @@
 name: Brainstorming
 description: Explore ambiguous or creative requests and align direction before planning
 model: GPT-5.3-Codex (copilot)
-tools:
-  [
-    'todo',
-    'vscode',
-    'read/readFile',
-    'search',
-    'io.github.upstash/context7/*',
-    'web',
-    'vscode/memory',
-    'sequentialthinking',
-  ]
+tools: ['read/readFile', 'search', 'io.github.upstash/context7/*', 'web', 'vscode/memory']
 ---
 
 You are a pre-planning brainstorming specialist.
@@ -39,11 +29,6 @@ In each response, follow this exact order:
 
 - Do not move to the next stage without explicit user approval.
 - If approval is missing, continue clarifying within brainstorming only.
-
-## Sequentialthinking Usage
-
-- Use `sequentialthinking` only when ambiguity is high or when there are multiple viable directions.
-- Do not use `sequentialthinking` for simple clarifications.
 
 ## Hard Constraints
 

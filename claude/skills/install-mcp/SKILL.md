@@ -21,6 +21,7 @@ claude mcp add --transport stdio --env KEY=value <имя_сервера> -- npx 
 ```
 
 ### Критические правила:
+
 1. **Все флаги ДО имени сервера:** `--transport`, `--env`, `--scope`
 2. **`--` отделяет команду запуска** от аргументов Claude CLI
 3. **Всегда `-y` у npx** — иначе npx ждёт подтверждения и stdio зависает
@@ -31,26 +32,31 @@ claude mcp add --transport stdio --env KEY=value <имя_сервера> -- npx 
 ## Примеры установки
 
 ### Playwright (браузер)
+
 ```bash
 claude mcp add --transport stdio playwright -- npx -y @playwright/mcp@latest --output-dir tmp/.playwright-mcp
 ```
 
 ### GitHub
+
 ```bash
 claude mcp add --transport stdio --env GITHUB_PERSONAL_ACCESS_TOKEN=ghp_xxx github -- npx -y @modelcontextprotocol/server-github
 ```
 
 ### Context7 (документация)
+
 ```bash
 claude mcp add --transport stdio --env CONTEXT7_API_KEY=ctx7sk-xxx context7 -- npx -y @upstash/context7-mcp@latest
 ```
 
 ### n8n
+
 ```bash
 claude mcp add --transport stdio --env N8N_API_URL=https://xxx --env N8N_API_KEY=xxx --env MCP_MODE=stdio --env LOG_LEVEL=error n8n -- npx -y n8n-mcp
 ```
 
 ### HTTP-сервер (без npx)
+
 ```bash
 claude mcp add --transport http <имя> <url>
 ```
@@ -59,11 +65,11 @@ claude mcp add --transport http <имя> <url>
 
 ## Scope: куда сохраняется
 
-| Флаг | Файл | Когда использовать |
-|------|------|-------------------|
-| (по умолчанию / `--scope local`) | `~/.claude.json` | Личный сервер |
-| `--scope project` | `.mcp.json` в корне проекта | Для команды (коммитится в git) |
-| `--scope user` | `~/.claude.json` | Кросс-проектный личный |
+| Флаг                             | Файл                        | Когда использовать             |
+| -------------------------------- | --------------------------- | ------------------------------ |
+| (по умолчанию / `--scope local`) | `~/.claude.json`            | Личный сервер                  |
+| `--scope project`                | `.mcp.json` в корне проекта | Для команды (коммитится в git) |
+| `--scope user`                   | `~/.claude.json`            | Кросс-проектный личный         |
 
 ---
 
@@ -78,6 +84,7 @@ claude mcp remove <имя>         # удалить
 Внутри Claude Code: `/mcp` — статус всех серверов + авторизация OAuth.
 
 ### Если сервер не работает:
+
 1. Проверь что пакет работает: `npx -y @namespace/package --help`
 2. Увеличь таймаут: `MCP_TIMEOUT=10000 claude`
 3. Увеличь лимит вывода: `MAX_MCP_OUTPUT_TOKENS=50000 claude`
@@ -87,9 +94,9 @@ claude mcp remove <имя>         # удалить
 
 ## Частые ошибки
 
-| Ошибка | Причина | Решение |
-|--------|---------|---------|
-| Флаги игнорируются | Написаны после имени сервера | Перенести ДО имени |
-| Connection closed | npx ждёт подтверждения | Добавить `-y` |
-| Таймаут при старте | Медленная загрузка пакета | `MCP_TIMEOUT=10000` |
-| Дубли конфигов | Есть и `~/.claude.json` и `~/.claude/mcp_servers.json` | Удалить дубль |
+| Ошибка             | Причина                                                | Решение             |
+| ------------------ | ------------------------------------------------------ | ------------------- |
+| Флаги игнорируются | Написаны после имени сервера                           | Перенести ДО имени  |
+| Connection closed  | npx ждёт подтверждения                                 | Добавить `-y`       |
+| Таймаут при старте | Медленная загрузка пакета                              | `MCP_TIMEOUT=10000` |
+| Дубли конфигов     | Есть и `~/.claude.json` и `~/.claude/mcp_servers.json` | Удалить дубль       |

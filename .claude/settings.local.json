@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(claude mcp *)",
+      "PowerShell(Get-Content \"$env:USERPROFILE\\\\.claude.json\" | Select-String -Pattern \"playwright\" -Context 2)",
+      "PowerShell(Get-Content \"$env:USERPROFILE\\\\.claude.json\" | ConvertFrom-Json | ConvertTo-Json -Depth 5 | Select-String -Pattern \"playwright|projects|mcpServers\" -Context 1)"
+    ]
+  }
+}
